@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/454c257758.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 20px;
+      padding-top: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+    .header{
+      margin-top: 20px;
+    }
+    #selectors{
+      margin-top: 40px;
+      font-size: 20px;
+    }
+  </style>
+  <script>
+    function showFields(selectedOption) {
+      // Hide all sections initially
+      var sections = document.querySelectorAll('.section');
+      sections.forEach(function (section) {
+        section.classList.add('hidden');
+      });
+
+      // Show the selected section
+      document.getElementById(selectedOption).classList.remove('hidden');
+    }
+  </script>
+</head>
+
+<body>
+  <div>
+      <nav id="header" class="navbar navbar-expand-lg bg-body-transparent">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            ><img class="logo" src="assets/logo.png" alt="" /><i class="fa-solid fa-location-dot"></i> <i class="fa-solid fa-bus fa-xl"></i> Ghr Chalo</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              
+              <li class="nav-item" id="navitemcontact">
+                <a href="/gchalo/logout/">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  <header class="header">
+    <div>{% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </header>
+
+  <h1>Administrator Panel</h1>
+  <div id="selectors"><label>
+    <input type="radio" name="option" value="addBus" onchange="showFields('addBus')"> Bus
+  </label>
+  <label>
+    <input type="radio" name="option" value="addRoute" onchange="showFields('addRoute')"> Route
+  </label>
+  <label>
+    <input type="radio" name="option" value="editRoute" onchange="showFields('editRoute')"> Edit Route
+  </label></div>
+  
+
+  <div id="addBus" class="section hidden">
+    <h3>Bus Section</h3>
+    <form action="/gchalo/bus/" method="post">
+      {% csrf_token %}
+      <label for="rno">Enter Route No.: </label>
+      <input type="number" id="rno" name="rno"><br>
+      <label for="shift">Shift: </label>
+      <input type="number" id="shift" name="shift">
+      <input type="submit">
+    </form>
+  </div>
+
+  <div id="addRoute" class="section hidden">
+    <h2> Route Section</h2>
+    <a href="/gchalo/route/">Route</a>
+    <!-- Add more fields specific to adding a bus -->
+  </div>
+
+  <div id="editRoute" class="section hidden">
+    <h2>Edit Route Section</h2>
+
+    <form action="/gchalo/editroute/" method="post">
+      {% csrf_token %}
+      <label for="rno">Enter Route No.: </label>
+      <input type="number" id="rno" name="rno">
+      <label for="shift">Enter Shift No.: </label>
+      <input type="number" id="shift" name="shift">
+      <input type="submit">
+    </form>
+    <!-- Add more fields specific to adding a route -->
+  </div>
+  <div id="addBusToRoute" class="section hidden">
+    <h2>Add Bus Number to Existing Route Section</h2>
+    <label for="routeNumber">Route Number:</label>
+    <input type="text" id="routeNumber" /><br>
+    <label for="newBusNumber">New Bus Number:</label>
+    <input type="text" id="newBusNumber" /><br>
+
+  </div>
+  <!-- <div id="editRoute" class="section hidden">
+  <form action="/ghcalo/addroute/" method="post">
+    {% csrf_token %}
+  <div id="addroute" class="section hidden">
+    <h2>Add Route Section</h2>
+    <label for="rno">Route Number: </label>
+    <input type="number" id="rno" name="rno"/><br>
+    <label for="stpt">Start Point: </label>
+    <input type="text" id="stpt" name="stpt"/><br>
+    <label for="ept">End Point: </label>
+    <input type="text" id="ept" name="ept"/><br>
+    <input type="submit">
+    <!Add more fields specific to adding a bus -->
+  
+  <!-- Add fields for editing a route -->
+  
+<script>
+  // Get the elements by their ID
+    var popupLink = document.getElementById("popup-link");
+    var popupWindow = document.getElementById("popup-window");
+    var closeButton = document.getElementById("close-button");
+    // Show the pop-up window when the link is clicked
+    popupLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      popupWindow.style.display = "block";
+    });
+    // Hide the pop-up window when the close button is clicked
+    closeButton.addEventListener("click", function () {
+      popupWindow.style.display = "none";
+    });
+    function closePopup() {
+      var popupWindow = document.getElementById("popup-window");
+      popupWindow.style.display = "none";
+    }
+</script>
+</body>
+
+</html>

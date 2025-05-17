@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route</title>
+    <script>
+        function showAddStopSection() {
+            var addStopSection = document.getElementById('addstop');
+            addStopSection.classList.toggle('hidden');
+        }
+    </script>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header> 
+        <div>
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </header>
+    <form action="/gchalo/modifyroute/" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th></th>
+                <th>Route No.</th>
+                <th>Start Stop</th>
+                <th>End Stop</th>
+            </tr>
+            {% for i in tab %}
+                <tr>
+                    <td>
+                        <input type="radio" id="{{i.0}}" name="rno" value="{{i.0}}">
+                        <label for="{{i.0}}"></label><br>
+                    </td>
+                    <td>{{i.0}}</td>
+                    <td>{{i.1}}</td>
+                    <td>{{i.2}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <button type="submit" name="edit">Edit</button>
+        <button type="submit" name="delete">Delete</button>
+    </form>
+    <button onclick="showAddStopSection()">Add Route</button>
+        <div id="addstop" class="section hidden">
+            <form action="/gchalo/addroute/" method="post">
+                {% csrf_token %}
+                <label for="rno">Route Number: </label>
+  <input type="number" id="rno" name="rno"/><br>
+  <label for="stpt">Start Stop: </label>
+  <input type="text" id="stpt" name="stpt"/><br>
+  <label for="ept">End Stop: </label>
+  <input type="text" id="ept" name="ept"/><br>
+  <input type="submit">
+</form>
+        </div>
+    <br><br>
+    {% if record %}
+        <form action="/gchalo/updateroute/{{record.0}}/" method="post">
+            {% csrf_token %}
+            <p>Route No.: {{record.0}}</p>
+            <label for="stpt">Start Stop: </label>
+            <input type="text" name="stpt" id="stpt" value="{{record.1}}"><br>
+            <label for="ept">End Stop: </label>
+            <input type="text" name="ept" id="ept" value="{{record.2}}"><br>
+            <button type="submit">Update</button>
+        </form>
+        
+    {% endif %}
+</body>
+</html>

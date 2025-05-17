@@ -1,0 +1,306 @@
+{% if tabs %}
+      <div id="selectors" style="font-family: 'Space Grotesk', sans-serif; font-size: 12px;"><label>
+          <input type="radio" name="option" value="s1" onchange="showFields('s1')"> Shift 1
+        </label>
+        <label style="margin-left: 10%;">
+          <input type="radio" name="option" value="s2" onchange="showFields('s2')">Shift 2
+        </label>
+      
+      </div>
+      
+      
+      <div id="s1" class="section hidden transitd">
+        <h6 style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 400; margin-top: 2%;">Towards</h6>
+        <div id="transitdestination"><label>
+            <input type="radio" name="destination" value="R2C" onchange="showFieldss('R2C')"> to college
+          </label>
+          <label>
+            <input type="radio" name="destination" value="R2H" onchange="showFieldss('R2H')" > to home
+          </label>
+        </div>
+        <!-- <p>Shift 1:-</p> -->
+        
+        <div id="R2H" class="transitdestination hidden">
+          
+          <p>Bus on this Route towards Home:-</p>
+          <table style="width: 30%;">
+            <tr>
+              <th style="background-color: #FFBF23; color:black">Bus No.</th>
+            </tr>
+            {% for i in x %}
+            <tr>
+              <td>{{i.0}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <br />
+        </div>
+        <div id="R2C" class="transitdestination hidden">
+          <p>Bus on this Route towards College:-</p>
+          <table style="width: 30%;">
+            <tr>
+              <th style="background-color: #FFBF23; color:black">Bus No.</th>
+            </tr>
+            {% for i in y %}
+            <tr>
+              <td>{{i.0}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <br />
+          <table>
+            <tr>
+              <th>Stop</th>
+              <th>Time</th>
+            </tr>
+            {% for i in tab %}
+            <tr>
+              <td>{{i.2}}</td>
+              <td>{{i.3}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <br />
+        </div>
+      </div>
+      <div id="s2" class="section hidden">
+        <div id="transitdestinationS2"><label>
+            <input type="radio" name="destination" value="R2Cs2" onchange="showFieldss('R2Cs2')"> to college
+          </label>
+          <label>
+            <input type="radio" name="destination" value="R2Hs2" onchange="showFieldss('R2Hs2')" > to home
+          </label>
+        </div>
+       
+        <!-- <br /> -->
+        <div id="R2Hs2" class="transitdestination hidden">
+          <p>Bus on this Route towards Home:-</p>
+          <table>
+            <tr>
+              <th style="background-color: #FFBF23; color: #000000;">Bus No.</th>
+            </tr>
+            {% for i in m %}
+            <tr>
+              <td>{{i.0}}</td>
+            </tr>
+            {% endfor %}
+          </table><br>
+        </div>
+        <div id="R2Cs2" class="transitdestination hidden">
+          <p>Bus on this Route towards College:-</p>
+          
+          <table>
+            <tr>
+              <th style="background-color: #FFBF23; color: #000;">Bus No.</th>
+            </tr>
+            {% for i in n %}
+            <tr>
+              <td>{{i.0}}</td>
+            </tr>
+            {% endfor %}
+          </table><br>
+          <table>
+            <tr>
+              <th>Stop</th>
+              <th>Time</th>
+            </tr>
+            {% for i in tabs %}
+            <tr>
+              <td>{{i.2}}</td>
+              <td>{{i.3}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      
+      </div>
+      
+      {% endif %}
+      {% if gets %}
+
+      <div id="Locselectors" style="font-family: 'Space Grotesk', sans-serif; font-size: 12px;"><label>
+          <input type="radio" name="Loption" value="ls1" onchange="showFields('ls1')"> Shift 1
+        </label>
+        <label style="margin-left: 10%;">
+          <input type="radio" name="Loption" value="ls2" onchange="showFields('ls2')">Shift 2
+        </label>
+      
+      </div>
+      <div id="ls1" class="section hidden transitd">
+        <h6 style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 400; margin-top: 2%;">Towards</h6>
+        <div id="loctransitdestination"><label>
+            <input type="radio" name="ldestination" value="l2C" onchange="showFieldss('l2C')"> to college
+          </label>
+          <label>
+            <input type="radio" name="ldestination" value="l2H" onchange="showFieldss('l2H')"> to home
+          </label>
+        </div>
+        <p>Shift 1:-</p>
+        <div id="l2H" class="transitdestination hidden">
+          <p>Bus on this Route Towards Home:-</p>
+          <table>
+            <tr>
+              <th style="background-color: #FFBF23; color: #000;">Route No.</th>
+              <th style="background-color: #FFBF23; color: #000;">Bus No.</th>
+            </tr>
+            {% for i in x %}
+            <tr>
+              <td>{{i.1}}</td>
+              <td>{{i.0}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <br />
+        </div>
+        <div id="l2C" class="transitdestination hidden">
+          <p>Bus on this Route Towards College:-</p>
+          <table>
+            <tr>
+              <th style="background-color: #FFBF23; color: #000;">Route No.</th>
+              <th style="background-color: #FFBF23; color: #000;">Bus No.</th>
+            </tr>
+            {% for i in y %}
+            <tr>
+              <td>{{i.1}}</td>
+              <td>{{i.0}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <br />
+          <table>
+            <tr>
+              <th>Route No.</th>
+              <th>Stop</th>
+              <th>Time</th>
+            </tr>
+            {% for i in get %}
+            <tr>
+              <td>{{i.0}}</td>
+              <td>{{i.1}}</td>
+              <td>{{i.2}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          <br />
+        </div>
+      </div>
+    <div id="ls2" class="section hidden">
+      <div id="loctransitdestinationS2"><label>
+          <input type="radio" name="ldestination" value="l2Cs2" onchange="showFieldss('l2Cs2')"> to college
+        </label>
+        <label>
+          <input type="radio" name="ldestination" value="l2Hs2" onchange="showFieldss('l2Hs2')"> to home
+        </label>
+      </div>
+      <div id="l2Hs2" class="transitdestination hidden">
+        <p>Bus on this Route towards Home:-</p>
+        <table>
+          <tr>
+            <th style="background-color: #FFBF23; color: #000;">Route No.</th>
+            <th style="background-color: #FFBF23; color: #000;">Bus No.</th>
+          </tr>
+          {% for i in m %}
+          <tr>
+            <td>{{i.1}}</td>
+            <td>{{i.0}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <div id="l2Cs2" class="transitdestination hidden">
+        <p>Shift 2:-</p>
+        <table>
+          <tr>
+            <th>Route No.</th>
+            <th>Stop</th>
+            <th>Time</th>
+          </tr>
+          {% for i in gets %}
+          <tr>
+            <td>{{i.0}}</td>
+            <td>{{i.1}}</td>
+            <td>{{i.2}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <br />
+        
+        <p>Bus on this Route towards College:-</p>
+        <table>
+          <tr>
+            <th style="background-color: #FFBF23; color: #000;">Route No.</th>
+            <th style="background-color: #FFBF23; color: #000;">Bus No.</th>
+          </tr>
+          {% for i in n %}
+          <tr>
+            <td>{{i.1}}</td>
+            <td>{{i.0}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+    {% endif %}
+      <img src="{% static 'final/bus.gif' %}" id="anim" alt="bus">
+    </div>
+
+
+
+  </div>
+
+
+  
+  <script>
+    function selectrouteNo() {
+      const searchForm = document.getElementById("searchForm");
+      searchForm.action = "/gchalo/displayparticularroute/";
+      document.getElementById("searchBox").placeholder = "Enter Route No";
+      document.getElementById("searchBox").name = "rno";
+      document.getElementById("searchBox").type = "number";
+    }
+
+    function selectStop() {
+      const searchForm = document.getElementById("searchForm");
+      searchForm.action = "/gchalo/searchstop/";
+      document.getElementById("searchBox").placeholder = "Enter Stop";
+      document.getElementById("searchBox").type = "text";
+      document.getElementById("searchBox").name = "stop";
+
+    }
+    function switchLocations() {
+      const locationElement = document.getElementById("transitLocation");
+      const destinationElement =
+        document.getElementById("transitDestination");
+      document.getElementById("searchBox").type = "number";
+      // Swap the innerHTML of the location and destination elements
+      const temp = locationElement.innerHTML;
+      locationElement.innerHTML = destinationElement.innerHTML;
+      destinationElement.innerHTML = temp;
+    }
+    function showShift2TowardsHome() {
+        // Set the default radio button selections
+        document.querySelector('input[name="option"][value="s2"]').checked = true;
+        document.querySelector('input[name="destination"][value="R2Hs2"]').checked = true;
+       
+        // Show the "Shift 2 Towards Home" section
+        document.getElementById("ls2").classList.remove('hidden');
+        document.getElementById("l2Hs2").classList.remove('hidden');
+      }
+      function showDefaultOptions() {
+          // Set the default radio button selections
+          document.querySelector('input[name="Loption"][value="ls2"]').checked = true;
+          document.querySelector('input[name="ldestination"][value="l2Hs2"]').checked = true;
+
+          // Show the "Shift 2 Towards Home" section
+          document.getElementById("ls2").classList.remove('hidden');
+          document.getElementById("l2Hs2").classList.remove('hidden');
+        }
+
+        // Call the function to set the default selections and visibility
+        showDefaultOptions();
+      // Call the function to set the default selections and visibility
+      showShift2TowardsHome();
+  </script>
+</body>
+
+</html>

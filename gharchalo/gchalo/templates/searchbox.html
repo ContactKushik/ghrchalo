@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #searchBoxn {
+            width: 300px;
+            padding: 10px;
+        }
+
+        #suggestions {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+        }
+
+        .suggestion {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .suggestion:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="search-container">
+        <input type="text" id="searchBoxn" oninput="showSuggestions()">
+        <div id="suggestions"></div>
+    </div>
+
+    <script>
+        const states = [
+            "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat",
+            "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra",
+            "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
+            "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"
+        ];
+
+        function showSuggestions() {
+            const searchBox = document.getElementById("searchBoxn");
+            const suggestionsContainer = document.getElementById("suggestions");
+            const inputValue = searchBox.value.toLowerCase();
+            const suggestions = states.filter(state => state.toLowerCase().startsWith(inputValue));
+
+            if (inputValue === "") {
+                suggestionsContainer.style.display = "none";
+            } else {
+                suggestionsContainer.style.display = "block";
+                suggestionsContainer.innerHTML = "";
+
+                suggestions.forEach(suggestion => {
+                    const suggestionElement = document.createElement("div");
+                    suggestionElement.classList.add("suggestion");
+                    suggestionElement.innerText = suggestion;
+                    suggestionElement.addEventListener("click", () => {
+                        searchBox.value = suggestion;
+                        suggestionsContainer.style.display = "none";
+                    });
+                    suggestionsContainer.appendChild(suggestionElement);
+                });
+            }
+        }
+
+        document.addEventListener("click", function (e) {
+            const suggestionsContainer = document.getElementById("suggestions");
+            if (e.target !== suggestionsContainer && !suggestionsContainer.contains(e.target)) {
+                suggestionsContainer.style.display = "none";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

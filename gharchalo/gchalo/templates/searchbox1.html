@@ -1,0 +1,78 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head> 
+	<meta charset="UTF-8" /> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+	<meta name="viewport" content= 
+		"width=device-width, initial-scale=1.0" /> 
+
+	<style> 
+		@import url( 
+"https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"); 
+
+		* { 
+			margin: 0; 
+			padding: 0; 
+			box-sizing: border-box; 
+		} 
+
+		body { 
+			font-family: "Roboto Condensed", sans-serif; 
+			background-color: green; 
+			padding: 40px 550px; 
+		} 
+
+		h1, 
+		h3 { 
+			font-family: Arial; 
+		} 
+
+		.container { 
+			margin: 150px auto; 
+			font-size: 18px; 
+			color: white; 
+		} 
+
+		.container input { 
+			margin-top: 4px; 
+			height: 50px; 
+			width: 100%; 
+			outline: none; 
+			border: none; 
+			padding: 0 20px 0 20px; 
+			font-size: 20px; 
+		} 
+	</style> 
+</head> 
+
+<body> 
+	<div class="container"> 
+		<h1>GeeksforGeeks</h1> 
+		<h3>HTML <datalist> Tag</h3> 
+		<label for="programmingLanguages"> 
+			Choose Your Favourite Programming Language: 
+		</label> 
+		<div class="text-container"> 
+			<input type="text" list="programmingLanguages"
+						placeholder="Enter Here" /> 
+			<datalist id="programmingLanguages"> 
+				<option value="Objective C">Objective C</option> 
+				<option value="C++">C++</option> 
+				<option value="C#">C#</option> 
+				<option value="Cobol">Cobol</option> 
+				<option value="Go">Go</option> 
+				<option value="Java">Java</option> 
+				<option value="JavaScript">JavaScript</option> 
+				<option value="Python">Python</option> 
+				<option value="PHP">PHP</option> 
+				<option value="Pascal">Pascal</option> 
+				<option value="Perl">Perl</option> 
+				<option value="R">R</option> 
+				<option value="Swift">Swift</option> 
+			</datalist> 
+		</div> 
+	</div> 
+</body> 
+
+</html>
